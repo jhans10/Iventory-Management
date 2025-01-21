@@ -30,16 +30,16 @@ public class AccessToken {
     private Environment environment;
 
 
-    @Value("${access-token.private}")
+    @Value("${access-token.private-key}")
     private String accessTokenPrivateKeyPath;
 
-    @Value("${access-token.public}")
+    @Value("${access-token.public-key}")
     private String accessTokenPublicKeyPath;
 
-    @Value("${refresh-token.private}")
+    @Value("${refresh-token.private-key}")
     private String refreshTokenPrivateKeyPath;
 
-    @Value("${refresh-token.public}")
+    @Value("${refresh-token.public-key}")
     private String refreshTokenPublicKeyPath;
 
     private KeyPair accessTokenKeyPair;

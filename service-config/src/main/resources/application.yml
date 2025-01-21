@@ -5,13 +5,17 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/jhans10/Iventory-Management.git
+          uri: https://github.com/jhans10/Iventory-Management
           clone-on-start: true
           default-label: main
   security:
     user:
       name: configuser
       password: configpassword
+logging:
+  level:
+    org.springframework: DEBUG
+
 
 
 

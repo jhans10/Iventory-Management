@@ -17,18 +17,21 @@ logging:
     com:
       eureka: OFF
       discovery:  OFF
-access-token:
-  private: "access-refresh-token-keys/access-token-private.key"
-  public: "access-refresh-token-keys/access-token-public.key"
+#access-token:
+#  private: "access-refresh-token-keys/access-token-private.key"
+#  public: "access-refresh-token-keys/access-token-public.key"
 
-refresh-token:
-  private: "access-refresh-token-keys/refresh-token-private.key"
-  public: "access-refresh-token-keys/refresh-token-public.key"
+#refresh-token:
+#  private: "access-refresh-token-keys/refresh-token-private.key"
+#  public: "access-refresh-token-keys/refresh-token-public.key"
 
 spring:
   cloud:
     config:
-      uri:
+      uri: http://localhost:8888
+      username: configuser
+      password: configpassword
+      import: "optional:configserver:http://localhost:8888"
     gateway:
       routes:
         - id: product-service
