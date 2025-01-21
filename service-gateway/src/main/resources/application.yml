@@ -1,0 +1,48 @@
+spring.application.name: service-gateway
+server:
+  port: 9999
+  max-http-request-header-size: 40KB
+eureka:
+  instance:
+    instance-id:  ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address:  true
+  client:
+    service-url:
+      defaultZone: http://localhost:9990/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  level:
+    com:
+      eureka: OFF
+      discovery:  OFF
+access-token:
+  private: "access-refresh-token-keys/access-token-private.key"
+  public: "access-refresh-token-keys/access-token-public.key"
+
+refresh-token:
+  private: "access-refresh-token-keys/refresh-token-private.key"
+  public: "access-refresh-token-keys/refresh-token-public.key"
+
+spring:
+  cloud:
+    config:
+      uri:
+    gateway:
+      routes:
+        - id: product-service
+          uri:  lb://product-service:8081
+          predicates:
+            #- Path=/service/products/**
+            - Path=/api-product-controller/**
+          filters:
+            #- RewritePath=/service/products/(?<remaining>.*), /api-product-controller/${remaining}
+            - name: GatewayAuthenticationFilter
+        - id: security
+          uri:  lb://security:8082
+          predicates:
+            - Path=/auth/**
+
+
+
