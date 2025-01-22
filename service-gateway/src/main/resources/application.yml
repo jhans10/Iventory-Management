@@ -27,11 +27,6 @@ logging:
 
 spring:
   cloud:
-    config:
-      uri: http://localhost:8888
-      username: configuser
-      password: configpassword
-      import: "optional:configserver:http://localhost:8888"
     gateway:
       routes:
         - id: product-service
@@ -46,6 +41,11 @@ spring:
           uri:  lb://security:8082
           predicates:
             - Path=/auth/**
+  config:
+    uri: http://localhost:8888
+    username: configuser
+    password: configpassword
+    import: optional:configserver:http://localhost:8888
 
 
 

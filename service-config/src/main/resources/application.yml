@@ -1,20 +1,37 @@
 server:
   port: 8888
+
 spring:
+  application:
+    name: key-service
   cloud:
     config:
       server:
         git:
+          # URL del repositorio
           uri: https://github.com/jhans10/Iventory-Management
+          # Si las configuraciones están en un subdirectorio
+          # searchPaths: config
+          # Autenticación para repositorio privado (opcional)
+          # username: tu-usuario-github
+          # password: tu-token-de-acceso-personal
+          # Clonar el repositorio al inicio
           clone-on-start: true
+          # Rama por defecto a usar
           default-label: main
   security:
     user:
-      name: configuser
-      password: configpassword
+      # Usar variables de entorno para credenciales seguras
+      name: ${CONFIG_USER:configuser}
+      password: ${CONFIG_PASSWORD:configpassword}
+
+# Logs detallados para depuración
 logging:
   level:
-    org.springframework: DEBUG
+    org.springframework.cloud.config: DEBUG
+    org.eclipse.jgit: DEBUG
+
+
 
 
 
