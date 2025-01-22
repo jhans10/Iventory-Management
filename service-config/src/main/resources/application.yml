@@ -9,7 +9,7 @@ spring:
       server:
         git:
           # URL del repositorio
-          uri: https://github.com/jhans10/Iventory-Management
+          uri: https://github.com/jhans10/Iventory-Management.git
           # Si las configuraciones están en un subdirectorio
           # searchPaths: config
           # Autenticación para repositorio privado (opcional)

@@ -14,8 +14,6 @@ public class ServiceConfigApplication  implements CommandLineRunner {
 	//@Value("${access-token.private-key}")
 	//private String accessTokenPrivateKeyPath;
 
-	@Value("${access-token.private-key:default/private/key/path}")
-	private String accessTokenPrivateKeyPath;
 
 
 	public static void main(String[] args) {
@@ -25,6 +23,6 @@ public class ServiceConfigApplication  implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(accessTokenPrivateKeyPath);
+
 	}
 }
